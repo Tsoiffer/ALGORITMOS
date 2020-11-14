@@ -2,7 +2,7 @@
 #include <iostream>
 #include <stdio.h>
 using namespace std;
-
+//1234
 struct DatoArchPlato
 {
     int codPlato; // (1 a 200)
