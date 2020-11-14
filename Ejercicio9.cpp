@@ -41,7 +41,8 @@ void ingresarFecha(Fecha);
 void procesar(FILE*,Nodo*,float m[10],Fecha,int);
 int hayAdicPendientes(Nodo*);
 void mostrarComMozos(float v[10]);
-
+Nodo* buscar (Nodo*, int);
+Nodo* buscarInsertar(Nodo* ,DatoLista );
 int main()
 {
     FILE*arch=fopen("Platos.dat","rb");
@@ -134,7 +135,6 @@ void procesar(FILE*aPlatos,Nodo*mesas[],float comMozos[],Fecha fecha,int &nroFac
         cin>>nroMesa;
     }
 }
-
 Nodo* buscar(Nodo* mesa ,int codigo)
 {   
     Nodo* r=mesa;
