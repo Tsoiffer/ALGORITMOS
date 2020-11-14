@@ -35,11 +35,11 @@ struct Nodo
     Nodo* sig;
 };
 
-void inicPunt(Nodo* v[]);
+void inicPunt(Nodo* v[48]);
 void inicFloat(float v[10]);
 void ingresarFecha(Fecha);
-void procesar(FILE*,Nodo* v[],float m[10],Fecha,int);
-bool hayAdicPendientes(Nodo* v[]);
+void procesar(FILE*,Nodo* v[48],float m[10],Fecha,int);
+bool hayAdicPendientes(Nodo* v[48]);
 void mostrarComMozos(float v[10]);
 Nodo* buscar (Nodo*, int);
 Nodo* buscarInsertar(Nodo* ,DatoLista );
