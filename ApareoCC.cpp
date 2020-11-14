@@ -79,6 +79,7 @@ void apareo(Nodo*lista1, Nodo*lista2)
 }
 void cc(Nodo*lista)
 {
+    Nodo*p=lista;
     Nodo*r=lista;
     while(r!=NULL)
     {
