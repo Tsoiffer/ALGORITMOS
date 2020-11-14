@@ -43,6 +43,7 @@ bool hayAdicPendientes(Nodo* v[]);
 void mostrarComMozos(float v[10]);
 Nodo* buscar (Nodo*, int);
 Nodo* buscarInsertar(Nodo* ,DatoLista );
+int mostrarFact (Fecha, int, int, FILE*, Nodo*, int);
 int main()
 {
     FILE*arch=fopen("Platos.dat","rb");
