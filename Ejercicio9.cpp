@@ -201,7 +201,7 @@ float mostrarFact(Fecha f,int nroFac,int mozo,FILE*aPlatos,Nodo*&lista, int norM
     fclose(aFac);
     return impTotal;
 }
-bool hayAdicPendientes(Nodo* v[])
+bool hayAdicPendientes(Nodo* v[48])
 {
     int i=0;
     while(i<48 && v[i]==NULL)
