@@ -38,7 +38,7 @@ struct Nodo
 void inicPunt(Nodo*& v[48]);
 void inicFloat(float v[10]);
 void ingresarFecha(Fecha);
-void procesar(File,Nodo*,float v[10],Fecha,int);
+void procesar(File*,Nodo*,float v[10],Fecha,int);
 int hayAdicPendientes(Nodo*);
 void mostrarComMozos(float v[10]);
 
@@ -137,7 +137,7 @@ void procesar(FILE*aPlatos,Nodo*mesas[],float comMozos[],Fecha fecha,int &nroFac
 float mostrarFact(Fecha f,int nroFac,int mozo,FILE*aPlatos,Nodo*&lista, int norM)
 {
     cout<<"Fecha "<<f<<"Nro Factura "<<nroFac<<endl;
-    cout<<"Cant      Descripci�n            Precio Unitario          Importe"<<endl;
+    cout<<"Cant      Descripcion            Precio Unitario          Importe"<<endl;
     Nodo*aux;
     float imp,impTotal=0;
     DatoArchPlato plato;
