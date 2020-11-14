@@ -5,10 +5,9 @@ using namespace std;
 //1234
 struct DatoArchPlato
 {
-    int codPlato; // (1 a 200)
+    int codPlato; 
 	char descripcion[41];
 	float precio;
-
 };
 struct Fecha
 {
