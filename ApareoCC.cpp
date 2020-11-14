@@ -2,7 +2,7 @@
 #include <stdio.h>
 
 
-//Apareo:Dadas la lista del primer parcial y la del segundo parcial mostrar situación
+//Apareo:Dadas la lista del primer parcial y la del segundo parcial mostrar situaciï¿½n
 //CC: Dada una lista con alumnos repetidos mostrar alumno y promedio
 /*
 lista simple de alumnos, cada nodo tiene legajo nombre y nota.
@@ -46,9 +46,9 @@ void apareo(Nodo*lista1, Nodo*lista2)
     r2=lista2;
     while(r1!=NULL && r2!=NULL)
     {
-        if(r1->info.leg<r2->info.leg)
+        if(r1->info.leg<r2->info.leg) //Se fija si la info del nodo de la primer lista es menor que la info del primero de la segunda
         {
-            cout<<r1->info.leg<<condicion(r1->info.nota,0)<<endl;
+            cout<<r1->info.leg<<condicion(r1->info.nota,0)<<endl; //En este caso, que sea menor quiere decir que el alumno de la segunda lista no rindiÃ³ el primer parcial, entonc
             r1=r1->sig;
         }
         else
@@ -95,7 +95,7 @@ void cc(Nodo*lista)
 
     }
 }
-void cc(Nodo*lista) //versión con 2 punteros
+void cc(Nodo*lista) //versiï¿½n con 2 punteros
 {
     Nodo*p=lista;
     Nodo*r=lista;
