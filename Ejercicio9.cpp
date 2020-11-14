@@ -38,12 +38,12 @@ struct Nodo
 void inicPunt(Nodo* v[48]);
 void inicFloat(float v[10]);
 void ingresarFecha(Fecha);
-void procesar(FILE*,Nodo* v[48],float m[10],Fecha,int);
+void procesar(FILE*,Nodo* v[48],float m[10],Fecha,int &);
 bool hayAdicPendientes(Nodo* v[48]);
 void mostrarComMozos(float v[10]);
-Nodo* buscar (Nodo*, int);
-Nodo* buscarInsertar(Nodo* ,DatoLista );
-int mostrarFact (Fecha, int, int, FILE*, Nodo*, int);
+Nodo* buscar (Nodo* &, int);
+Nodo* buscarInsertar(Nodo* & ,DatoLista );
+int mostrarFact (Fecha, int , int, FILE*, Nodo*, int);
 int main()
 {
     FILE*arch=fopen("Platos.dat","rb");
@@ -91,7 +91,7 @@ void ingresarFecha(Fecha fecha)
     cout<<"ingese el año"<<endl;
     cin>>fecha.anio;
 }
-void procesar(FILE*aPlatos,Nodo*mesas[],float comMozos[],Fecha fecha,int &nroFac)
+void procesar(FILE*aPlatos,Nodo*mesas[],float comMozos[],Fecha fecha,int & nroFac)
 {
     int nroMesa, codigo, cantPedi;
 	char codOp;
@@ -136,7 +136,7 @@ void procesar(FILE*aPlatos,Nodo*mesas[],float comMozos[],Fecha fecha,int &nroFac
         cin>>nroMesa;
     }
 }
-Nodo* buscar(Nodo* mesa ,int codigo)
+Nodo* buscar(Nodo* & mesa ,int codigo)
 {   
     Nodo* r=mesa;
     while(r!=NULL && r->info.codPlato != codigo)
@@ -145,7 +145,7 @@ Nodo* buscar(Nodo* mesa ,int codigo)
     }
         return r;
 }
-Nodo* buscarInsertar(Nodo* mesa,DatoLista dl)
+Nodo* buscarInsertar(Nodo* & mesa,DatoLista dl)
 { 
     Nodo*ant,*r=mesa;
     while(r!=NULL && r->info.codPlato != dl.codPlato)
@@ -168,7 +168,7 @@ Nodo* buscarInsertar(Nodo* mesa,DatoLista dl)
     else
         return r;
 }
-float mostrarFact(Fecha f,int nroFac,int mozo,FILE*aPlatos,Nodo*&lista, int norM)
+int mostrarFact(Fecha f,int nroFac,int mozo,FILE*aPlatos,Nodo*lista, int norM)
 {
     cout<<"Fecha"<<f.dia<<f.mes<<f.anio<<" Nro Factura "<<nroFac<<endl;
     cout<<"Cant      Descripcion            Precio Unitario          Importe"<<endl;
@@ -201,6 +201,16 @@ float mostrarFact(Fecha f,int nroFac,int mozo,FILE*aPlatos,Nodo*&lista, int norM
     fwrite(&fac,sizeof(DatoArchFac),1,aFac);
     fclose(aFac);
     return impTotal;
+}
+void mostrarComMozos(float comMozos[10])
+{
+    int i=0;
+for (i; i<10; i++)
+{  
+    cout<<"la comision del mozo es: "<<comMozos[i]<<endl;
+    
+}
+    
 }
 bool hayAdicPendientes(Nodo* v[])
 {
