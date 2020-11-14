@@ -35,10 +35,10 @@ struct Nodo
     Nodo* sig;
 };
 
-void inicPunt(Nodo*& v[48]);
+void inicPunt(Nodo*);
 void inicFloat(float v[10]);
 void ingresarFecha(Fecha);
-void procesar(File*,Nodo*,float v[10],Fecha,int);
+void procesar(FILE*,Nodo*,float m[10],Fecha,int);
 int hayAdicPendientes(Nodo*);
 void mostrarComMozos(float v[10]);
 
@@ -54,7 +54,7 @@ int main()
         Fecha fecha;
         ingresarFecha(fecha);
         int nroFac;
-        cout<<"nro fac inicial "<<endl<<;
+        cout<<"nro fac inicial "<<endl;
         cin>>nroFac;
         procesar(arch,mesas,comMozos,fecha,nroFac);
         cout<<"nuevo nro de fac inicial "<<nroFac<<endl;
@@ -66,7 +66,7 @@ int main()
     return 0;
 }
 
-void inicPunt(Nodo*& mesas[])
+void inicPunt(Nodo* mesas[])
 {
  for(int i=0;i<48;i++)
  {
@@ -82,16 +82,16 @@ void inicFloat(float mozos[])
 }
 void ingresarFecha(Fecha fecha)
 {
-    cout<<"Ingrese numero de dia"<<endl<<;
+    cout<<"Ingrese numero de dia"<<endl;
     cin>>fecha.dia;
-    cout<<"ingrese el numero del mes"<<endl<<;
+    cout<<"ingrese el numero del mes"<<endl;
     cin>>fecha.mes;
-    cout<<"ingese el año"<<endl<<;
+    cout<<"ingese el año"<<endl;
     cin>>fecha.anio;
 }
 void procesar(FILE*aPlatos,Nodo*mesas[],float comMozos[],Fecha fecha,int &nroFac)
 {
-    int nroMesa, codigo, cantPedi; Numero de mesa (1..48)
+    int nroMesa, codigo, cantPedi;
 	char codOp;
 	Nodo*p;
 	DatoLista dl;
@@ -106,7 +106,7 @@ void procesar(FILE*aPlatos,Nodo*mesas[],float comMozos[],Fecha fecha,int &nroFac
             case 'A':
                 cout<<"Codigo plato a entregar ";
                 cin>>codigo;
-                cout<<"cantidad a entregar "
+                cout<<"cantidad a entregar ";
                 cin>>cantPedi;
                 dl.cod=Platocodigo;
                 dl.cant=0;
@@ -178,4 +178,3 @@ bool hayAdicPendientes(Nodo*v[])
     else
         return false;
 }
-
