@@ -204,13 +204,10 @@ int mostrarFact(Fecha f,int nroFac,int mozo,FILE*aPlatos,Nodo*lista, int norM)
 }
 void mostrarComMozos(float comMozos[10])
 {
-    int i=0;
-for (i; i<10; i++)
-{  
-    cout<<"la comision del mozo es: "<<comMozos[i]<<endl;
-    
-}
-    
+
+for (int i=0; i<10; i++)
+  cout<<"la comision del mozo es: "<<comMozos[i]<<endl;
+      
 }
 bool hayAdicPendientes(Nodo* v[])
 {
