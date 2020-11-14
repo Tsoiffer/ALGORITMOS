@@ -108,7 +108,7 @@ void procesar(FILE*aPlatos,Nodo*mesas[],float comMozos[],Fecha fecha,int &nroFac
                 cin>>codigo;
                 cout<<"cantidad a entregar ";
                 cin>>cantPedi;
-                dl.cod=Platocodigo;
+                dl.codPlato = codigo;
                 dl.cant=0;
                 p=buscarInsertar(mesas[nroMesa-1],dl);
                 p->info.cant+=cantPedi;
@@ -116,7 +116,7 @@ void procesar(FILE*aPlatos,Nodo*mesas[],float comMozos[],Fecha fecha,int &nroFac
             case 'B':
                 cout<<"Codigo plato a devolver ";
                 cin>>codigo;
-                cout<<"cantidad a devolver "
+                cout<<"cantidad a devolver ";
                 cin>>cantPedi;
                 p=buscar(mesas[nroMesa-1],codigo);
                 if(p!=NULL && p->info.cant>=cantPedi)
@@ -125,7 +125,7 @@ void procesar(FILE*aPlatos,Nodo*mesas[],float comMozos[],Fecha fecha,int &nroFac
             case 'F':
                 cout<<"nro de mozo ";
                 cin>>codigo;
-                impFac=mostrarFact(fecha,nroFac,codigo,aPlatos,mesas[nroMesa-1],nroMesa);
+                int impFac=mostrarFact(fecha,nroFac,codigo,aPlatos,mesas[nroMesa-1],nroMesa);
                 comMozos[codigo-1]+=impFac*0.01;
                 nroFac++;
             break;
@@ -134,9 +134,42 @@ void procesar(FILE*aPlatos,Nodo*mesas[],float comMozos[],Fecha fecha,int &nroFac
         cin>>nroMesa;
     }
 }
+
+Nodo* buscar(Nodo* mesa ,int codigo)
+{   
+    Nodo* r=mesa;
+    while(r!=NULL && r->info.codPlato != codigo)
+    {
+        r=r->sig;
+    }
+        return r;
+}
+Nodo* buscarInsertar(Nodo* mesa,DatoLista dl)
+{ 
+    Nodo*ant,*r=mesa;
+    while(r!=NULL && r->info.codPlato != dl.codPlato)
+    {
+        ant=r;
+        r=r->sig;
+    }
+
+    if(r==NULL)
+    {
+        Nodo*p=new Nodo;
+        p->info=dl;
+        p->sig=r;
+        if(r!=mesa)
+            ant->sig=p;
+        else
+            mesa=p;
+        return p;
+    }
+    else
+        return r;
+}
 float mostrarFact(Fecha f,int nroFac,int mozo,FILE*aPlatos,Nodo*&lista, int norM)
 {
-    cout<<"Fecha "<<f<<"Nro Factura "<<nroFac<<endl;
+    cout<<"Fecha"<<f.dia<<f.mes<<f.anio<<" Nro Factura "<<nroFac<<endl;
     cout<<"Cant      Descripcion            Precio Unitario          Importe"<<endl;
     Nodo*aux;
     float imp,impTotal=0;
@@ -161,7 +194,7 @@ float mostrarFact(Fecha f,int nroFac,int mozo,FILE*aPlatos,Nodo*&lista, int norM
     cout<<"mozo "<<mozo<<" total "<<impTotal<<endl;
     fac.fecha=f;
     fac.importe=impTotal;
-    fac.mesa=nroM;
+    fac.mesa=norM;
     fac.nroFactura=nroFac;
     fac.mozo=mozo;
     fwrite(&fac,sizeof(DatoArchFac),1,aFac);
