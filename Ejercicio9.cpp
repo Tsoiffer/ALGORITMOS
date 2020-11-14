@@ -35,11 +35,11 @@ struct Nodo
     Nodo* sig;
 };
 
-void inicPunt(Nodo*);
+void inicPunt(Nodo* v[]);
 void inicFloat(float v[10]);
 void ingresarFecha(Fecha);
-void procesar(FILE*,Nodo*,float m[10],Fecha,int);
-bool hayAdicPendientes(Nodo);
+void procesar(FILE*,Nodo* v[],float m[10],Fecha,int);
+bool hayAdicPendientes(Nodo* v[]);
 void mostrarComMozos(float v[10]);
 Nodo* buscar (Nodo*, int);
 Nodo* buscarInsertar(Nodo* ,DatoLista );
@@ -201,7 +201,7 @@ float mostrarFact(Fecha f,int nroFac,int mozo,FILE*aPlatos,Nodo*&lista, int norM
     fclose(aFac);
     return impTotal;
 }
-bool hayAdicPendientes(Nodo v[])
+bool hayAdicPendientes(Nodo* v[])
 {
     int i=0;
     while(i<48 && v[i]==NULL)
