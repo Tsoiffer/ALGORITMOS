@@ -74,13 +74,13 @@ crearlibrosact(listaLibAct);
 ordenarlistanac(listaNac);
 while(listaNac!=NULL)
 {
-       cout<<"La Nacionalidad:    "<<listaNac->nac<<" tiene un total de "<<listaNac->cant<<"autores"<<endl;
-       while (listaNac->subnodo!=NULL)
-       {
-           cout<<"El autor"<<listaNac->subnodo->apellido<<"tiene un total de "<<listaNac->subnodo->cantTit<<endl;
-           listaNac->subnodo=listaNac->subnodo->sig;
-       }
-       listaNac=listaNac->sig;
+    cout<<"La Nacionalidad:    "<<listaNac->nac<<" tiene un total de "<<listaNac->cant<<"autores"<<endl;
+    while (listaNac->subnodo!=NULL)
+    {
+        cout<<"El autor"<<listaNac->subnodo->apellido<<"tiene un total de "<<listaNac->subnodo->cantTit<<endl;
+        listaNac->subnodo=listaNac->subnodo->sig;
+    }
+    listaNac=listaNac->sig;
 }
 }
 
@@ -125,7 +125,7 @@ void crearlibrosact(NodoLibrosAct *listaLibAct)
     fclose(arch);
 }
 
-void ordenarlistanac(NodoNac *&listaNac)
+void ordenarlistanac(NodoNac *&listaNac) // Acá creamos un nodo Aux para guardar la info que había en el primer nodo de Lista Nac Y creamos un nuevo nodo "listaNacOrden" que sirvió para ir creando otra lista con los Nodos de la lista que ya se había creado. Después ya en esa nueva lista la vas buscando insertar
 {
     NodoNac *aux=NULL, *listaNacOrden=NULL;
     while (listaNac!=NULL)
@@ -172,8 +172,8 @@ void buscarinsertarnac(datlibro recorrer, NodoNac *&listaNac)
     }
     if(r!=NULL && r->nac==recorrer.nac)
         {
-             buscarinsertaraut(recorrer,r);
-             r->cant++;
+            buscarinsertaraut(recorrer,r);
+            r->cant++;
         }
     else
     {
@@ -192,12 +192,12 @@ void buscarinsertarnac(datlibro recorrer, NodoNac *&listaNac)
 void buscarinsertaraut(datlibro recorrer, NodoNac *&listaNac)
 {
     infoAut*  ant, *r= listaNac -> subnodo;
-    while (r != NULL && r->apellido != recorrer.apellido)
+    while(r != NULL && (strcmp(r->apellido,recorrer.apellido) != 0))
     {
         ant=r;
         r=r->sig;
     }
-    if (r != NULL && strcmp(r->apellido,recorrer.apellido))
+    if (r != NULL && strcmp(r->apellido,recorrer.apellido)==0)
     {
         r->cantTit+=recorrer.cant;
     }
@@ -217,7 +217,7 @@ void buscarinsertaraut(datlibro recorrer, NodoNac *&listaNac)
 void insertarordenado(NodoNac * & aux,NodoNac *& listaNacOrden)
 {
     NodoNac *ant, *r= listaNacOrden;
-     while(r!=NULL && aux->cant < r->cant)
+    while(r!=NULL && aux->cant < r->cant)
     {
         ant=r;
         r=r->sig;
