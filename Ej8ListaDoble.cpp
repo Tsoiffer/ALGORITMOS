@@ -12,7 +12,6 @@ using namespace std;
 
 int main()
 {
-
     return 0;
 }
 
@@ -38,7 +37,7 @@ void insertar(Nodo*&lis1,Nodo*&lis2, int nro)
     Nodo*p,*r;
     p=new Nodo;
     p->dato=nro;
-    if(lis1==NULL && lis2==NULL) //p no va a tener ni sucesor ni antecesor (agrega a lista vacía)
+    if(lis1==NULL && lis2==NULL) //p no va a tener ni sucesor ni antecesor (agrega a lista vacï¿½a)
     {
         p->sig=p->ant=NULL;
         lis1=lis2=p;
