@@ -135,7 +135,6 @@ void ordenarlistanac(NodoNac *&listaNac) // Acá creamos un nodo Aux para guarda
         insertarordenado(aux,listaNacOrden);
     }
     listaNac=listaNacOrden;
-    
 }
 
 void buscarinsertarordenado(datlibro recorrer, NodoLibrosAct*& listaLibAct)
