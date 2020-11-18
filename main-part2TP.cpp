@@ -46,8 +46,8 @@ struct NodoRepartidor
 struct NodoARBOL
 {
 
-   char nom [25];
-   unsigned cantvent;
+    char nom [25];
+    unsigned cantvent;
     NodoARBOL*izq;
     NodoARBOL*der;
 };
@@ -91,7 +91,7 @@ int main()
     if(bandera==3)
         mostrarListaDeRepartidores(repartidores);
     if(bandera==4)
-       mostrarArbol(Arbol);
+        mostrarArbol(Arbol);
     }
 return 0;
 }
