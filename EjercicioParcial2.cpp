@@ -83,6 +83,10 @@ void mostrarCreditosVacios(Nodo*);
 void ordenarListaExistente(Nodo * & ,Nodo *& );
 //Punto 9
 void mostrarListado(Nodo*&);
+//void ordenarListaExistente(Nodo * & ,Nodo *& ); Esta es igual a la del punto 8, hacen lo mismo y se les pasa los mismos parámetros.
+void ordenarSubListaExistente(Nodosub * & ,Nodosub *& );
+
+void mostrarRecibidoresDeCredito(Nodosub *, int);
 
 int main()
 {
@@ -281,8 +285,9 @@ void mostrarListado(Nodo*& lista)
 {
     Nodo *r=lista;
     Nodo *aux=NULL, *listaCreditosNueva=NULL;
+    Nodosub *auxsub=NULL, *listaAspiranteNueva=NULL,*rs;
 
-    while (r!=NULL)
+    while (r!=NULL) //Ordenas la Lista de Créditos 
     {
         aux=lista;
         lista=lista->sig;
@@ -292,9 +297,72 @@ void mostrarListado(Nodo*& lista)
     r=lista;
     while (r!=NULL)
     {
-        if(r->subnodo==NULL)
+        rs=r->subnodo;
+        while (rs!=NULL)
         {
-            cout<<"En el credito de codigo: "<<r->info.codigo<<" de descripcion "<<r->info.descripcion<<"no tuvo inscriptos"<<endl;
+        auxsub=rs;
+        rs=rs->sig;
+        ordenarSubListaExistente(auxsub,listaAspiranteNueva);
         }
+        cout<<"Las personas a las que se les otorgara el credito "<<r->info.descripcion<<" de codigo: "<<r->info.codigo<<" son: "<<endl;
+        mostrarRecibidoresDeCredito(listaAspiranteNueva,r->info.cupo);
     }
 }
+/*void ordenarListaExistente(Nodo * & aux,Nodo *& lista)
+{
+    Nodo *ant, *r= lista;
+    while(r!=NULL && aux->info.codigo < r->info.codigo) //ordenado de mayor a menor por codigo
+    {
+        ant=r;
+        r=r->sig;
+    }
+    if(r==NULL)
+    {
+        ant->sig=aux;
+        aux->sig=NULL;
+    }
+    else
+    {
+        ant->sig=aux;
+        aux->sig=r;
+    }
+}
+*/
+void ordenarSubListaExistente(Nodosub * & aux,Nodosub *& lista )
+{
+    Nodosub *ant, *r= lista;
+    while(r!=NULL && aux->info.ingreso < r->info.ingreso) //ordenado de mayor a menor por ingreso
+    {
+        ant=r;
+        r=r->sig;
+    }
+    if(r==NULL)
+    {
+        ant->sig=aux;
+        aux->sig=NULL;
+    }
+    else
+    {
+        ant->sig=aux;
+        aux->sig=r;
+    }
+}      
+
+void mostrarRecibidoresDeCredito(Nodosub* lista,int cupo)
+{
+    Nodosub * r=lista;
+    int i=0; 
+    while (r != NULL && i<=cupo)
+    {
+        cout<<"\tNombre: "<<r->info.apellidoYnombre<<" dni: "<<r->info.dni<<endl;
+        i++;
+        r=r->sig;
+    }
+}
+
+
+/*9) Función mostrarListado de inscriptos asignados
+Mostrar por cada crédito, ordenado por código: dni, apellido y nombre de cada persona a la que se le ha otorgado el crédito.
+Se le otorga el crédito a la cantidad de personas que se inscribieron para ese crédito o la cantidad máxima posible, según criterio de asignación. 
+Ejemplo: si el crédito tiene un cupo de 10 personas y se inscribieron 8 se le otorgará a los 8, si el crédito tiene un cupo de 10 y se inscribieron 15, se le otorgará a los 10 de mayor sueldo, o sea hay que mostrar, los 10 de mayor sueldo.
+Desarrollar todas las funciones utilizadas.*/
