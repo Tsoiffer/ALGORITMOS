@@ -84,19 +84,18 @@ void cc(Nodo*lista)
     while(r!=NULL)
     {
         unsigned legA=r->info.leg;
-
         unsigned s=0,c=0;
         do
         {
-           s+=p->info.nota;
-           c++;
-           p=p->sig;
+            s+=p->info.nota;
+            c++;
+            p=p->sig;
         }while(r!=NULL && r->info.leg==legA);
         cout<<legA<<s/c<<endl;
-
     }
 }
-void cc(Nodo*lista) //versi�n con 2 punteros
+
+void cc(Nodo*lista) //version con 2 punteros
 {
     Nodo*p=lista;
     Nodo*r=lista;
@@ -105,9 +104,9 @@ void cc(Nodo*lista) //versi�n con 2 punteros
         unsigned s=0,c=0;
         do
         {
-           s+=p->info.nota;
-           c++;
-           p=p->sig;
+            s+=p->info.nota;
+            c++;
+            p=p->sig;
         }while(p!=NULL && p->info.leg==r->info.leg);
         cout<<r->info.leg<<s/c;
         r=p;
