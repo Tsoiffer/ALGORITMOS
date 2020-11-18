@@ -1,6 +1,7 @@
 #include <iostream>
 #include <stdio.h>
 #include <string.h>
+#include <cstring>
 using namespace std;
 
 
@@ -348,7 +349,7 @@ void mostrarCuantosPedidosLevantados(int cantpedidos)
     if(cantpedidos==0)
         cout<< "Se pudieron levantar todos los pedidos"<<endl<<endl;
 	else
-        cout<< "Quedaron "<<cantpedidos<<" sin poder levantarse dado que no había pedidos disponibles. "<<endl<<endl;
+        cout<< "Quedaron "<<cantpedidos<<" sin poder levantarse dado que no habï¿½a pedidos disponibles. "<<endl<<endl;
 }
 
 void mostrarListaDeRepartidores(NodoRepartidor* repartidor)
