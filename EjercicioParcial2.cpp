@@ -255,6 +255,7 @@ void mostrarCreditosVacios(Nodo* lista)
         {
             cout<<"En el credito de codigo: "<<r->info.codigo<<" de descripcion "<<r->info.descripcion<<"no tuvo inscriptos"<<endl;
         }
+        r=r->sig;
     }
     
 }    
@@ -306,6 +307,7 @@ void mostrarListado(Nodo*& lista)
         }
         cout<<"Las personas a las que se les otorgara el credito "<<r->info.descripcion<<" de codigo: "<<r->info.codigo<<" son: "<<endl;
         mostrarRecibidoresDeCredito(listaAspiranteNueva,r->info.cupo);
+        r=r->sig;
     }
 }
 /*void ordenarListaExistente(Nodo * & aux,Nodo *& lista)
