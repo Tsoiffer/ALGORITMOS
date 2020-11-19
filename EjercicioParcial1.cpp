@@ -137,6 +137,7 @@ void mostrarEnPantalla(Nodo* v[15][31])
                 while (r!=NULL)
                 {
                     cout<<"\t\tel importe es: "<<r->info.importe<<"y el detalle es: "<<r->info.detalle<<endl;
+                    r=r->sig;
                 }
             }
         }
@@ -188,6 +189,7 @@ void mostrarGastosSector(Nodo* v[15][31])
                 while (r!=NULL)
                 {
                     gastos=gastos+r->info.importe;
+                    r=r->sig;
                 }
             }
             cout<<"El importe total del mes para el sector "<<i+1<<" fue : "<<gastos<<endl;
@@ -205,6 +207,7 @@ void mostrarGastos1Quincena (Nodo* v[15][31]) //Esta funcion muestra el gasto to
                 while (r!=NULL)
                 {
                     gastos=gastos+r->info.importe;
+                    r=r->sig;
                 }
             }
         }
@@ -217,9 +220,10 @@ void mayorGasto(Nodo* v[][31])
     int gastos;
     int sector;
     int dia;
+    gastos=0;
     for (int i=0;i<15;i++)
         {
-            gastos=0;
+            
             for (int j=0;j<31;j++)
             {
                 Nodo* r=v[i][j];
@@ -231,6 +235,7 @@ void mayorGasto(Nodo* v[][31])
                         dia=j+1;
                         sector=i+1;
                     }
+                    r=r->sig;
                 }
             }
         }
