@@ -54,7 +54,7 @@ int main()
         {
             if(rubro<4 && rubro>-1 )
             {
-                j= cont[rubro][0]+cont[rubro][1]+cont[rubro][2]+cont[rubro][3]+cont[rubro][4]+cont[rubro][5];
+                j= cont[rubro][0]+cont[rubro][1]+cont[rubro][2]+cont[rubro][3]+cont[rubro][4]+cont[rubro][5]; //Te suma todos los negocios de un rubro x
 
                 cout<<"Ingrese la zona en la que trabaja (1-6): "<<endl;
                 cin>>zon;
@@ -69,8 +69,8 @@ int main()
                 }
                 else
                 {
-                    neg[rubro][j].zona = zon;
-                    cont[rubro][zon-1]=cont[rubro][zon-1]+1;
+                    neg[rubro][j].zona = zon; //Se puede cambiar todo por recorrer el vector hasta la posicion 0
+                    cont[rubro][zon-1]=cont[rubro][zon-1]+1; //Sumamos 1 al contador
                     neg[rubro][j].rub=rubro;
                     cout<<"Ingrese el nombre del negocio:"<<endl;
                     cin>>neg[rubro][j].nom;
@@ -99,7 +99,7 @@ int main()
         }
 
         int a[4];
-        for(x=0;x<4;x++)
+        for(x=0;x<4;x++) //Creas un vector de 4 posiciones, donde en cada posicion vas a guardar la cant de negocios totales de 1 rubro en específico
         {
             a[x]=cont[x][0]+cont[x][1]+cont[x][2]+cont[x][3]+cont[x][4]+cont[x][5];
             MostrarSiHayRubroEnZona (a[x],x);
@@ -107,8 +107,8 @@ int main()
 
         for(x=0;x<4;x++)
         {
-            y=a[x];
-            ordenar(neg, x , y);
+            y=a[x]; //Y es la cantidad total de negocios, x es el rubro
+            ordenar(neg, x , y); // Ordenas la matriz de negocios
         }
 
         fwrite(neg[0],a[0]*sizeof(Negocio),1,archH);
@@ -166,7 +166,7 @@ void MostrarSiHayRubroEnZona (int a, int indiceRubro)
             break;
     }
     if (a)
-        cout<<"El rubro de "<<rubro<<" tiene negocios en al menos una zona"<<endl;
+        cout<<"El rubro de "<<rubro<<" tiene negocios en al menos una zona"<<endl; //Si es distinto de 0 quiere decir que el negocio tiene al mens 1 negocio en una zona
     else
         cout<<"El rubro de "<<rubro<<" no tiene negocios en ninguna zona"<<endl;
 
