@@ -13,7 +13,7 @@ struct Repartidor
 int main() 
 {
 	Repartidor rep;
-	int cant[6]={0};
+	int cant[6]={0}; //Inicializaron el vector
 	int i=0;
 	
 	FILE*arch = fopen("Repartidores.dat","wb");
